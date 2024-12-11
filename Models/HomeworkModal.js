@@ -25,10 +25,11 @@ const HomeWorkSchema = mongoose.Schema({
     ref:"ProfileModal"
   }
   ,
-  Tasks:{
+  status:
+  {
     type:mongoose.Schema.Types.ObjectId,
-    required:false,
-    ref:"TaskModal"
+    required:true,
+    default:"InProgress"
   }
   
 });

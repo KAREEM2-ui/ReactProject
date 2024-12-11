@@ -75,4 +75,26 @@ export default class CourseService {
             throw e;
         }
     }
+
+
+    static async  IsCourseExist(CourseID)
+    {
+        try
+        {
+            let Course = await CourseModal.findOne({_id:CourseID});
+
+            if(Course)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        catch(e)
+        {
+            console.log(e);
+        }
+    }
 }

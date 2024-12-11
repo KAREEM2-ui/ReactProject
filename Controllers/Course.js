@@ -80,7 +80,12 @@ export default class CourseController {
 
         if(!CourseID)
         {
-            return next(CustomeError(404,"No CourseID Provided"));
+            return next(CustomeError(400,"No CourseID Provided"));
+        }
+
+        if(! await CourseService.IsCourseExist(CourseID))
+        {
+            return next(CustomeError(404,"Course Not Found"));
         }
 
         try
@@ -94,5 +99,6 @@ export default class CourseController {
             return next(e);
         }
     }
+
 
 }
