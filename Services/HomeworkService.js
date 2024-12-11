@@ -1,4 +1,4 @@
-import HomewordModal from '../Models/HomeworkModal.js';
+import HomeworkModal from '../Models/HomeworkModal.js';
 
 
 export default class HomeworkService {
@@ -6,7 +6,7 @@ export default class HomeworkService {
     {
         try
         {
-            let NewHomeWork = new HomewordModal({...HomeworkDetails});
+            let NewHomeWork = new HomeworkModal({...HomeworkDetails});
 
             await NewHomeWork.save();
             return NewHomeWork;
@@ -21,7 +21,7 @@ export default class HomeworkService {
     {
         try
         {
-            let Homeworks = await HomewordModal.find({CreatedBy:UserID});
+            let Homeworks = await HomeworkModal.find({CreatedBy:UserID});
 
             return Homeworks;
         }
@@ -35,12 +35,11 @@ export default class HomeworkService {
     {
         let currentDate = new Date();
         let FutureDate = new Date();
-        FutureDate.setDate(currentDate.getDate()+30);
-
+        FutureDate.setMonth(currentDate.getMonth() + 1); 
         
         try
         {
-            let Homeworks = await HomewordModal.find({CreatedBy:UserID,DueDate:{$lt:FutureDate},Status:"InProgress"});
+            let Homeworks = await HomeworkModal.find({CreatedBy:UserID,DueDate:{$lt:FutureDate},Status:"InProgress"});
             return Homeworks;
         }
         catch(e)
@@ -55,7 +54,7 @@ export default class HomeworkService {
     {
         try
         {
-            let Homeworks = await HomewordModal.find({UserID,DueDate,Status:"InProgress"});
+            let Homeworks = await HomeworkModal.find({UserID,DueDate,Status:"InProgress"});
 
             return Homeworks;
         }

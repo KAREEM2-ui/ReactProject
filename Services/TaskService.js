@@ -153,8 +153,8 @@ export class SubTasksService {
 
         let currentDate = new Date();
         let FutureDate = new Date();
-        FutureDate.setDate(currentDate.getDate()+30);
-
+        FutureDate.setMonth(currentDate.getMonth() + 1); 
+        
         // find Private tasks id's
         let TasksIds = await TaskModal.find({Type:"Private",Status:"InProgress",CreatedBy:UserID},{_id:1});
         let PrivateSubTasks = await SubTaskModal.find({TaskID:{$in:TasksIds},DueDate:{$lt:FutureDate}});
