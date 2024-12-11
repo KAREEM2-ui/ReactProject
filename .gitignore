@@ -1,0 +1,24 @@
+# Node modules
+node_modules/
+
+# Logs
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# Environment files
+.env
+
+# Build and output directories
+build/
+dist/
+
+# Mac OS files (if you're using Mac)
+.DS_Store
+
+# IDEs (if you use specific IDEs like VS Code or WebStorm)
+.vscode/
+.idea/
+
+# React production build
+/public/
